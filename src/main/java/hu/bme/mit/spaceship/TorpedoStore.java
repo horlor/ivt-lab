@@ -16,11 +16,11 @@ public class TorpedoStore {
   //A random generator for the instance instead of creating a new at every fire
   private Random generator = new Random();
 
-  public TorpedoStore(int numberOfTorpedos){
+  public TorpedoStore(final int numberOfTorpedos){
     this.torpedoCount = numberOfTorpedos;
 
     // update failure rate if it was specified in an environment variable
-    String failureEnv = System.getenv("IVT_RATE");
+    final String failureEnv = System.getenv("IVT_RATE");
     if (failureEnv != null){
       try {
         FAILURE_RATE = Double.parseDouble(failureEnv);
@@ -30,7 +30,7 @@ public class TorpedoStore {
     }
   }
 
-  public boolean fire(int numberOfTorpedos){
+  public boolean fire(final int numberOfTorpedos){
     if(numberOfTorpedos < 1 || numberOfTorpedos > this.torpedoCount){
       throw new IllegalArgumentException("numberOfTorpedos");
     }
@@ -60,3 +60,4 @@ public class TorpedoStore {
     return this.torpedoCount;
   }
 }
+//Pár final a változások kedvéért
